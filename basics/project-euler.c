@@ -62,8 +62,54 @@ int euler3() {
     return largestPrime;
 }
 
+int reverse(int num) {
+    int result = 0;
+    while(num > 0) {
+        result = result * 10 + num % 10;
+        num = num / 10;
+    }
+    return result;
+}
+
+// Calculate the largest palindrome number from multiplying two 3-digit numbers
+int euler4() {
+    int product = 0;
+    for(int i = 999; i >= 100; i--) {
+        for(int j = i; j >= 100; j--) {
+            int potential = i * j;
+            if(reverse(potential) == potential && potential > product) {
+                product = potential;
+            }
+        }
+    }
+    return product;
+}
+
+bool divide(num) {
+    for(int i = 1; i < 20; i++) {
+        if(num % i != 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+// What is the smallest number that can be 
+// divided by each of the numbers from 1 to 10 w/o any remainder?
+int euler5() {
+    int result = 0;
+    int num = 20;
+    while(!divide(num)) {
+        if(divide(num)) {
+            return num;
+        }
+        num++;
+    }
+    return num;
+}
+
 int main(void) {
-  int result = euler3();
+  int result = euler5();
   printf("%d\n", result);
   return 0;
 }
