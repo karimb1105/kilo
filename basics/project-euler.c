@@ -85,7 +85,7 @@ int euler4() {
     return product;
 }
 
-bool divide(num) {
+bool divide(int num) {
     for(int i = 1; i < 20; i++) {
         if(num % i != 0) {
             return false;
@@ -100,16 +100,34 @@ int euler5() {
     int result = 0;
     int num = 20;
     while(!divide(num)) {
-        if(divide(num)) {
-            return num;
-        }
         num++;
     }
     return num;
 }
 
+// Find the difference b/w the sum of the suqares of the 1st 100 natural numbers 
+// and the square of the sum (sum 100 where n = 1 --> 100 and n^2)
+long squareSum() {
+    long result = 0;
+    for(int i = 1; i <= 100; i++) {
+        result += i * i;
+    }
+    return result;
+}
+
+long sumSquared() {
+    long result = 0;
+    for(int i = 1; i <= 100; i++) {
+        result += i;
+    }
+    return result * result;
+}
+long euler6() {
+    return sumSquared() - squareSum();
+}
+
 int main(void) {
-  int result = euler5();
-  printf("%d\n", result);
+  long result = euler6();
+  printf("%ld\n", result);
   return 0;
 }
